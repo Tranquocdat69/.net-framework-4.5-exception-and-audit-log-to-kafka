@@ -1,0 +1,150 @@
+﻿<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>Serilog.Sinks.Kafka</name>
+  </assembly>
+  <members>
+    <member name="T:Serilog.LoggerConfigurationKafkaExtensions">
+      <summary>
+            Logger configuration
+            </summary>
+    </member>
+    <member name="M:Serilog.LoggerConfigurationKafkaExtensions.Kafka(Serilog.Configuration.LoggerSinkConfiguration,Serilog.Sinks.Kafka.KafkaSinkOptions)">
+      <summary>
+            Adds a sink that writes log events to kafka
+            </summary>
+      <param name="loggerConfiguration">
+            The logger configuration.
+            </param>
+      <param name="options">
+            The <see cref="T:Serilog.Sinks.Kafka.KafkaSinkOptions" />.
+            </param>
+      <returns>
+            Logger configuration, allowing configuration to continue.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">
+            A required parameter is null.
+            </exception>
+      <requires csharp="!(loggerConfiguration &lt;= null)" vb="!(loggerConfiguration &lt;= Nothing)">!(loggerConfiguration &lt;= null)</requires>
+      <requires csharp="!(options &lt;= null)" vb="!(options &lt;= Nothing)">!(options &lt;= null)</requires>
+      <ensures csharp="!(result &lt;= null)" vb="!(result &lt;= Nothing)">!(result &lt;= null)</ensures>
+    </member>
+    <member name="M:Serilog.LoggerConfigurationKafkaExtensions.CloseAndFlush(Serilog.ILogger)">
+      <summary>
+            Hack to approximate a clean shutdown of Serilog v1.
+            See: https://github.com/serilog/serilog/issues/8
+            </summary>
+      <param name="logger">The logger.</param>
+    </member>
+    <member name="T:Serilog.Sinks.Kafka.KafkaSink">
+      <summary>
+            Writes log events as documents to Kafka.
+            </summary>
+      <invariant>this.jsonFormatter != null</invariant>
+      <invariant>this.kafkaClient != null</invariant>
+    </member>
+    <member name="M:Serilog.Sinks.Kafka.KafkaSink.#ctor(Serilog.Sinks.Kafka.AbstractKafkaClient,Serilog.Sinks.Kafka.KafkaSinkOptions)">
+      <summary>
+            Initializes a new instance of the <see cref="T:Serilog.Sinks.Kafka.KafkaSink" /> class.
+            </summary>
+      <param name="kafkaClient">
+            The kafka Client.
+            </param>
+      <param name="options">
+            The configuration options.
+            </param>
+      <requires exception="T:System.ArgumentNullException" csharp="!(options &lt;= null)" vb="!(options &lt;= Nothing)">!(options &lt;= null)</requires>
+      <exception cref="T:System.ArgumentNullException">options &lt;= null</exception>
+      <requires exception="T:System.ArgumentNullException" csharp="!(kafkaClient &lt;= null)" vb="!(kafkaClient &lt;= Nothing)">!(kafkaClient &lt;= null)</requires>
+      <exception cref="T:System.ArgumentNullException">kafkaClient &lt;= null</exception>
+    </member>
+    <member name="M:Serilog.Sinks.Kafka.KafkaSink.EmitBatchAsync(System.Collections.Generic.IEnumerable{Serilog.Events.LogEvent})">
+      <summary>
+            Emit a batch of log events, running to completion asynchronously.
+            </summary>
+      <param name="events">
+            The events to emit.
+            </param>
+      <remarks>
+            Override either <see cref="M:Serilog.Sinks.PeriodicBatching.PeriodicBatchingSink.EmitBatch(System.Collections.Generic.IEnumerable{Serilog.Events.LogEvent})" />
+             or <see cref="M:Serilog.Sinks.PeriodicBatching.PeriodicBatchingSink.EmitBatchAsync(System.Collections.Generic.IEnumerable{Serilog.Events.LogEvent})" />,
+            not both.
+            </remarks>
+      <returns>
+            The <see cref="T:System.Threading.Tasks.Task" />.
+            </returns>
+    </member>
+    <member name="T:Serilog.Sinks.Kafka.KafkaSinkOptions">
+      <summary>
+            The kafka sink options.
+            </summary>
+      <invariant>this.Brokers != null &amp;&amp; this.Brokers.Any()</invariant>
+      <invariant>this.Topic != null</invariant>
+    </member>
+    <member name="M:Serilog.Sinks.Kafka.KafkaSinkOptions.#ctor(System.String,System.Uri[])">
+      <summary>
+            Initializes a new instance of the <see cref="T:Serilog.Sinks.Kafka.KafkaSinkOptions" /> class.
+            </summary>
+      <param name="topic">The Kafka topic to log to</param>
+      <param name="brokers">The Kafka broker endpionts to log to</param>
+      <requires exception="T:System.ArgumentException" csharp="!(topic &lt;= null)" vb="!(topic &lt;= Nothing)">!(topic &lt;= null)</requires>
+      <exception cref="T:System.ArgumentException">topic &lt;= null</exception>
+      <requires exception="T:System.ArgumentException" csharp="brokers != default(System.Uri[]) &amp;&amp; Any&lt;System.Uri&gt;(brokers)" vb="brokers &lt;&gt; Nothing AndAlso Any(brokers)">brokers != default(System.Uri[]) &amp;&amp; System.Linq.Enumerable.Any&lt;System.Uri&gt;(brokers)</requires>
+      <exception cref="T:System.ArgumentException">brokers == default(System.Uri[]) ? !false : !System.Linq.Enumerable.Any&lt;System.Uri&gt;(brokers)</exception>
+    </member>
+    <member name="P:Serilog.Sinks.Kafka.KafkaSinkOptions.BatchPostingLimit">
+      <summary>
+            Gets or sets the maximum number of events to post in a single batch.
+            </summary>
+    </member>
+    <member name="P:Serilog.Sinks.Kafka.KafkaSinkOptions.Period">
+      <summary>
+            Gets or sets the time to wait between checking for event batches.
+            </summary>
+    </member>
+    <member name="P:Serilog.Sinks.Kafka.KafkaSinkOptions.Brokers">
+      <summary>
+            Gets a list of Kafka Broker URIs.
+            </summary>
+      <getter>
+        <ensures csharp="result != default(System.Uri[]) &amp;&amp; Any&lt;System.Uri&gt;(result)" vb="result &lt;&gt; Nothing AndAlso Any(result)">result != default(System.Uri[]) &amp;&amp; System.Linq.Enumerable.Any&lt;System.Uri&gt;(result)</ensures>
+      </getter>
+      <setter>
+        <requires csharp="value != default(System.Uri[]) &amp;&amp; Any&lt;System.Uri&gt;(value)" vb="value &lt;&gt; Nothing AndAlso Any(value)">value != default(System.Uri[]) &amp;&amp; System.Linq.Enumerable.Any&lt;System.Uri&gt;(value)</requires>
+      </setter>
+    </member>
+    <member name="P:Serilog.Sinks.Kafka.KafkaSinkOptions.Topic">
+      <summary>
+            Gets the name of the Kafka queue to write to.
+            </summary>
+      <getter>
+        <ensures csharp="!(result &lt;= null)" vb="!(result &lt;= Nothing)">!(result &lt;= null)</ensures>
+      </getter>
+      <setter>
+        <requires csharp="!(value &lt;= null)" vb="!(value &lt;= Nothing)">!(value &lt;= null)</requires>
+      </setter>
+    </member>
+    <member name="P:Serilog.Sinks.Kafka.KafkaSinkOptions.RenderSerilogMessage">
+      <summary>
+            Gets or sets a value indicating whether or not the Serilog message should be rendered.
+            </summary>
+    </member>
+    <member name="M:Serilog.Sinks.Kafka.KafkaSink.CreateKafkaMessage(Serilog.Events.LogEvent)">
+      <requires exception="T:System.ArgumentNullException" csharp="!(loggingEvent &lt;= null)" vb="!(loggingEvent &lt;= Nothing)">!(loggingEvent &lt;= null)</requires>
+      <exception cref="T:System.ArgumentNullException">loggingEvent &lt;= null</exception>
+      <ensures csharp="!(result &lt;= null)" vb="!(result &lt;= Nothing)">!(result &lt;= null)</ensures>
+    </member>
+    <member name="M:Serilog.Sinks.Kafka.KafkaClient.#ctor(Serilog.Sinks.Kafka.KafkaSinkOptions)">
+      <requires exception="T:System.ArgumentNullException" csharp="!(options &lt;= null)" vb="!(options &lt;= Nothing)">!(options &lt;= null)</requires>
+      <exception cref="T:System.ArgumentNullException">options &lt;= null</exception>
+    </member>
+    <member name="T:Serilog.Sinks.Kafka.AbstractKafkaClient">
+      <invariant>this.options != null</invariant>
+      <invariant>this.producerConfiguration != null</invariant>
+    </member>
+    <member name="M:Serilog.Sinks.Kafka.AbstractKafkaClient.#ctor(Serilog.Sinks.Kafka.KafkaSinkOptions)">
+      <requires exception="T:System.ArgumentNullException" csharp="!(options &lt;= null)" vb="!(options &lt;= Nothing)">!(options &lt;= null)</requires>
+      <exception cref="T:System.ArgumentNullException">options &lt;= null</exception>
+    </member>
+  </members>
+</doc>

@@ -1,0 +1,550 @@
+<instrumentationManifest xmlns="http://schemas.microsoft.com/win/2004/08/events">
+ <instrumentation xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:win="http://manifests.microsoft.com/win/2004/08/windows/events">
+  <events xmlns="http://schemas.microsoft.com/win/2004/08/events">
+<provider name="kafka4net" guid="{e151e100-4f87-5648-18ab-12b2aa0741e1}" resourceFileName="C:\Work\Git\kafka4net\src\bin\Release\kafka4net.kafka4net.etwManifest.dll" messageFileName="C:\Work\Git\kafka4net\src\bin\Release\kafka4net.kafka4net.etwManifest.dll" symbol="kafka4net">
+ <tasks>
+  <task name="Fetcher" message="$(string.task_Fetcher)" value="1"/>
+  <task name="Connection" message="$(string.task_Connection)" value="2"/>
+  <task name="Correlation" message="$(string.task_Correlation)" value="3"/>
+  <task name="RecoveryMonitor" message="$(string.task_RecoveryMonitor)" value="4"/>
+  <task name="Protocol" message="$(string.task_Protocol)" value="5"/>
+  <task name="Producer" message="$(string.task_Producer)" value="6"/>
+  <task name="Cluster" message="$(string.task_Cluster)" value="7"/>
+  <task name="Metadata" message="$(string.task_Metadata)" value="8"/>
+  <task name="Consumer" message="$(string.task_Consumer)" value="9"/>
+  <task name="Marker2" message="$(string.task_Marker2)" value="64634"/>
+  <task name="EventSourceMessage" message="$(string.task_EventSourceMessage)" value="65534"/>
+ </tasks>
+ <opcodes>
+  <opcode name="CancelSentWakeup" message="$(string.opcode_CancelSentWakeup)" value="12"/>
+  <opcode name="PartitionSubscribed" message="$(string.opcode_PartitionSubscribed)" value="13"/>
+  <opcode name="FetchResponse" message="$(string.opcode_FetchResponse)" value="14"/>
+  <opcode name="Message" message="$(string.opcode_Message)" value="15"/>
+  <opcode name="Sleep" message="$(string.opcode_Sleep)" value="16"/>
+  <opcode name="Wakeup" message="$(string.opcode_Wakeup)" value="17"/>
+  <opcode name="FetchRequest" message="$(string.opcode_FetchRequest)" value="18"/>
+  <opcode name="Connecting" message="$(string.opcode_Connecting)" value="19"/>
+  <opcode name="Connected" message="$(string.opcode_Connected)" value="20"/>
+  <opcode name="Errored" message="$(string.opcode_Errored)" value="21"/>
+  <opcode name="Disconnected" message="$(string.opcode_Disconnected)" value="22"/>
+  <opcode name="ReplaceClosedClient" message="$(string.opcode_ReplaceClosedClient)" value="23"/>
+  <opcode name="MarkSocketAsFailedCorrelationLoopCancelling" message="$(string.opcode_MarkSocketAsFailedCorrelationLoopCancelling)" value="24"/>
+  <opcode name="MarkSocketAsFailedTcpClosing" message="$(string.opcode_MarkSocketAsFailedTcpClosing)" value="25"/>
+  <opcode name="ReadingMessageSize" message="$(string.opcode_ReadingMessageSize)" value="26"/>
+  <opcode name="ServerClosedConnection" message="$(string.opcode_ServerClosedConnection)" value="27"/>
+  <opcode name="ReadMessageSize" message="$(string.opcode_ReadMessageSize)" value="28"/>
+  <opcode name="ReadingBodyChunk" message="$(string.opcode_ReadingBodyChunk)" value="29"/>
+  <opcode name="ReadBodyChunk" message="$(string.opcode_ReadBodyChunk)" value="30"/>
+  <opcode name="ReadBody" message="$(string.opcode_ReadBody)" value="31"/>
+  <opcode name="ReceivedCorrelationId" message="$(string.opcode_ReceivedCorrelationId)" value="32"/>
+  <opcode name="ExecutingHandler" message="$(string.opcode_ExecutingHandler)" value="33"/>
+  <opcode name="ExecutedHandler" message="$(string.opcode_ExecutedHandler)" value="34"/>
+  <opcode name="Error" message="$(string.opcode_Error)" value="35"/>
+  <opcode name="Complete" message="$(string.opcode_Complete)" value="36"/>
+  <opcode name="WritingMessage" message="$(string.opcode_WritingMessage)" value="37"/>
+  <opcode name="PartitionRecovered" message="$(string.opcode_PartitionRecovered)" value="38"/>
+  <opcode name="PartitionFailed" message="$(string.opcode_PartitionFailed)" value="39"/>
+  <opcode name="PartitionFailedAgain" message="$(string.opcode_PartitionFailedAgain)" value="40"/>
+  <opcode name="RecoveryLoopStarted" message="$(string.opcode_RecoveryLoopStarted)" value="41"/>
+  <opcode name="SendingPing" message="$(string.opcode_SendingPing)" value="42"/>
+  <opcode name="PingResponse" message="$(string.opcode_PingResponse)" value="43"/>
+  <opcode name="PingFailed" message="$(string.opcode_PingFailed)" value="44"/>
+  <opcode name="PossiblyHealedPartitions" message="$(string.opcode_PossiblyHealedPartitions)" value="45"/>
+  <opcode name="NoHealedPartitions" message="$(string.opcode_NoHealedPartitions)" value="46"/>
+  <opcode name="CheckingBrokerAccessibility" message="$(string.opcode_CheckingBrokerAccessibility)" value="47"/>
+  <opcode name="BrokerIsAccessible" message="$(string.opcode_BrokerIsAccessible)" value="48"/>
+  <opcode name="HealedPartitions" message="$(string.opcode_HealedPartitions)" value="49"/>
+  <opcode name="RecoveryLoopStop" message="$(string.opcode_RecoveryLoopStop)" value="50"/>
+  <opcode name="MetadataRequest" message="$(string.opcode_MetadataRequest)" value="51"/>
+  <opcode name="MetadataResponse" message="$(string.opcode_MetadataResponse)" value="52"/>
+  <opcode name="ProduceRequest" message="$(string.opcode_ProduceRequest)" value="53"/>
+  <opcode name="ProduceResponse" message="$(string.opcode_ProduceResponse)" value="54"/>
+  <opcode name="OffsetRequest" message="$(string.opcode_OffsetRequest)" value="55"/>
+  <opcode name="OffsetResponse" message="$(string.opcode_OffsetResponse)" value="56"/>
+  <opcode name="PermanentFailure" message="$(string.opcode_PermanentFailure)" value="57"/>
+  <opcode name="PermanentFailureDetails" message="$(string.opcode_PermanentFailureDetails)" value="58"/>
+  <opcode name="RecoverableErrors" message="$(string.opcode_RecoverableErrors)" value="59"/>
+  <opcode name="NewTopic" message="$(string.opcode_NewTopic)" value="60"/>
+  <opcode name="PartitionErrorChange" message="$(string.opcode_PartitionErrorChange)" value="61"/>
+  <opcode name="PartitionIsrChange" message="$(string.opcode_PartitionIsrChange)" value="62"/>
+  <opcode name="PartitionLeaderChange" message="$(string.opcode_PartitionLeaderChange)" value="63"/>
+  <opcode name="PartitionReplicasChange" message="$(string.opcode_PartitionReplicasChange)" value="64"/>
+  <opcode name="PartitionTransportError" message="$(string.opcode_PartitionTransportError)" value="65"/>
+  <opcode name="NewBroker" message="$(string.opcode_NewBroker)" value="66"/>
+  <opcode name="FlowControl" message="$(string.opcode_FlowControl)" value="67"/>
+  <opcode name="Create" message="$(string.opcode_Create)" value="200"/>
+  <opcode name="Starting" message="$(string.opcode_Starting)" value="201"/>
+  <opcode name="Started" message="$(string.opcode_Started)" value="202"/>
+  <opcode name="Stopping" message="$(string.opcode_Stopping)" value="203"/>
+  <opcode name="Stopped" message="$(string.opcode_Stopped)" value="204"/>
+ </opcodes>
+ <keywords>
+  <keyword name="DataDump" message="$(string.keyword_DataDump)" mask="0x1"/>
+  <keyword name="Session3" message="$(string.keyword_Session3)" mask="0x100000000000"/>
+  <keyword name="Session2" message="$(string.keyword_Session2)" mask="0x200000000000"/>
+  <keyword name="Session1" message="$(string.keyword_Session1)" mask="0x400000000000"/>
+  <keyword name="Session0" message="$(string.keyword_Session0)" mask="0x800000000000"/>
+ </keywords>
+ <events>
+  <event value="0" version="0" level="win:LogAlways" symbol="EventSourceMessage" task="EventSourceMessage" template="EventSourceMessageArgs"/>
+  <event value="1" version="0" level="win:Informational" symbol="FetcherStart" opcode="Create" task="Fetcher" template="FetcherStartArgs"/>
+  <event value="2" version="0" level="win:Informational" symbol="FetcherCancelSentWakeup" opcode="CancelSentWakeup" task="Fetcher" template="FetcherCancelSentWakeupArgs"/>
+  <event value="3" version="0" level="win:Informational" symbol="FetcherPartitionSubscribed" opcode="PartitionSubscribed" task="Fetcher" template="FetcherPartitionSubscribedArgs"/>
+  <event value="4" version="0" level="win:Informational" symbol="FetcherFetchResponse" opcode="FetchResponse" task="Fetcher" template="FetcherFetchResponseArgs"/>
+  <event value="5" version="0" level="win:Informational" symbol="FetcherMessage" opcode="Message" task="Fetcher" template="FetcherMessageArgs"/>
+  <event value="6" version="0" level="win:Informational" symbol="FetcherSleep" opcode="Sleep" task="Fetcher" template="FetcherSleepArgs"/>
+  <event value="7" version="0" level="win:Informational" symbol="FetcherWakeup" opcode="Wakeup" task="Fetcher" template="FetcherWakeupArgs"/>
+  <event value="8" version="0" level="win:Informational" symbol="FetcherFetchRequest" opcode="FetchRequest" task="Fetcher" template="FetcherFetchRequestArgs"/>
+  <event value="101" version="0" level="win:Informational" symbol="ConnectionConnecting" opcode="Connecting" task="Connection" template="ConnectionConnectingArgs"/>
+  <event value="102" version="0" level="win:Informational" symbol="ConnectionConnected" opcode="Connected" task="Connection" template="ConnectionConnectedArgs"/>
+  <event value="103" version="0" level="win:Informational" symbol="ConnectionErrored" opcode="Errored" task="Connection" template="ConnectionErroredArgs"/>
+  <event value="104" version="0" level="win:Informational" symbol="ConnectionDisconnected" opcode="Disconnected" task="Connection" template="ConnectionDisconnectedArgs"/>
+  <event value="107" version="0" level="win:Informational" symbol="ConnectionReplaceClosedClient" opcode="ReplaceClosedClient" task="Connection" template="ConnectionReplaceClosedClientArgs"/>
+  <event value="108" version="0" level="win:Informational" symbol="Connection_MarkSocketAsFailed_CorrelationLoopCancelling" opcode="MarkSocketAsFailedCorrelationLoopCancelling" task="Connection" template="Connection_MarkSocketAsFailed_CorrelationLoopCancellingArgs"/>
+  <event value="109" version="0" level="win:Informational" symbol="Connection_MarkSocketAsFailed_TcpClosing" opcode="MarkSocketAsFailedTcpClosing" task="Connection" template="Connection_MarkSocketAsFailed_TcpClosingArgs"/>
+  <event value="201" version="0" level="win:Informational" symbol="CorrelationCreate" opcode="Create" task="Correlation"/>
+  <event value="202" version="0" level="win:Informational" symbol="CorrelationStart" opcode="win:Start" task="Correlation"/>
+  <event value="203" version="0" level="win:Informational" symbol="CorrelationReadingMessageSize" opcode="ReadingMessageSize" task="Correlation"/>
+  <event value="204" version="0" level="win:Informational" symbol="CorrelationServerClosedConnection" opcode="ServerClosedConnection" task="Correlation"/>
+  <event value="205" version="0" level="win:Informational" symbol="CorrelationReadMessageSize" opcode="ReadMessageSize" task="Correlation" template="CorrelationReadMessageSizeArgs"/>
+  <event value="206" version="0" level="win:Informational" symbol="Correlation_ReadingBodyChunk" opcode="ReadingBodyChunk" task="Correlation" template="Correlation_ReadingBodyChunkArgs"/>
+  <event value="207" version="0" level="win:Informational" symbol="CorrelationReadBodyChunk" opcode="ReadBodyChunk" task="Correlation" template="CorrelationReadBodyChunkArgs"/>
+  <event value="208" version="0" level="win:Informational" symbol="CorrelationReadBody" opcode="ReadBody" task="Correlation" template="CorrelationReadBodyArgs"/>
+  <event value="209" version="0" level="win:Informational" symbol="CorrelationReceivedCorrelationId" opcode="ReceivedCorrelationId" task="Correlation" template="CorrelationReceivedCorrelationIdArgs"/>
+  <event value="210" version="0" level="win:Informational" symbol="CorrelationExecutingHandler" opcode="ExecutingHandler" task="Correlation"/>
+  <event value="211" version="0" level="win:Informational" symbol="CorrelationExecutedHandler" opcode="ExecutedHandler" task="Correlation"/>
+  <event value="212" version="0" level="win:Informational" symbol="CorrelationError" opcode="Error" task="Correlation" template="CorrelationErrorArgs"/>
+  <event value="213" version="0" level="win:Informational" symbol="CorrelationComplete" opcode="Complete" task="Correlation"/>
+  <event value="214" version="0" level="win:Informational" symbol="CorrelationWritingMessage" opcode="WritingMessage" task="Correlation" template="CorrelationWritingMessageArgs"/>
+  <event value="301" version="0" level="win:Informational" symbol="RecoveryMonitor_Create" opcode="Create" task="RecoveryMonitor" template="RecoveryMonitor_CreateArgs"/>
+  <event value="302" version="0" level="win:Informational" symbol="RecoveryMonitor_PartitionRecovered" opcode="PartitionRecovered" task="RecoveryMonitor" template="RecoveryMonitor_PartitionRecoveredArgs"/>
+  <event value="303" version="0" level="win:Informational" symbol="RecoveryMonitor_PartitionFailed" opcode="PartitionFailed" task="RecoveryMonitor" template="RecoveryMonitor_PartitionFailedArgs"/>
+  <event value="304" version="0" level="win:Informational" symbol="RecoveryMonitor_PartitionFailedAgain" opcode="PartitionFailedAgain" task="RecoveryMonitor" template="RecoveryMonitor_PartitionFailedAgainArgs"/>
+  <event value="305" version="0" level="win:Informational" symbol="RecoveryMonitor_RecoveryLoopStarted" opcode="RecoveryLoopStarted" task="RecoveryMonitor" template="RecoveryMonitor_RecoveryLoopStartedArgs"/>
+  <event value="306" version="0" level="win:Informational" symbol="RecoveryMonitor_SendingPing" opcode="SendingPing" task="RecoveryMonitor" template="RecoveryMonitor_SendingPingArgs"/>
+  <event value="307" version="0" level="win:Informational" symbol="RecoveryMonitor_PingResponse" opcode="PingResponse" task="RecoveryMonitor" template="RecoveryMonitor_PingResponseArgs"/>
+  <event value="308" version="0" level="win:Informational" symbol="RecoveryMonitor_PingFailed" opcode="PingFailed" task="RecoveryMonitor" template="RecoveryMonitor_PingFailedArgs"/>
+  <event value="309" version="0" level="win:Informational" symbol="RecoveryMonitor_PossiblyHealedPartitions" opcode="PossiblyHealedPartitions" task="RecoveryMonitor" template="RecoveryMonitor_PossiblyHealedPartitionsArgs"/>
+  <event value="310" version="0" level="win:Informational" symbol="RecoveryMonitor_NoHealedPartitions" opcode="NoHealedPartitions" task="RecoveryMonitor" template="RecoveryMonitor_NoHealedPartitionsArgs"/>
+  <event value="311" version="0" level="win:Informational" symbol="RecoveryMonitor_CheckingBrokerAccessibility" opcode="CheckingBrokerAccessibility" task="RecoveryMonitor" template="RecoveryMonitor_CheckingBrokerAccessibilityArgs"/>
+  <event value="312" version="0" level="win:Informational" symbol="RecoveryMonitor_BrokerIsAccessible" opcode="BrokerIsAccessible" task="RecoveryMonitor" template="RecoveryMonitor_BrokerIsAccessibleArgs"/>
+  <event value="313" version="0" level="win:Informational" symbol="RecoveryMonitor_HealedPartitions" opcode="HealedPartitions" task="RecoveryMonitor" template="RecoveryMonitor_HealedPartitionsArgs"/>
+  <event value="314" version="0" level="win:Informational" symbol="RecoveryMonitor_RecoveryLoopStop" opcode="RecoveryLoopStop" task="RecoveryMonitor" template="RecoveryMonitor_RecoveryLoopStopArgs"/>
+  <event value="400" version="0" level="win:Informational" symbol="ProtocolMetadataRequest" keywords="DataDump" opcode="MetadataRequest" task="Protocol" template="ProtocolMetadataRequestArgs"/>
+  <event value="401" version="0" level="win:Informational" symbol="ProtocolMetadataResponse" keywords="DataDump" opcode="MetadataResponse" task="Protocol" template="ProtocolMetadataResponseArgs"/>
+  <event value="402" version="0" level="win:Informational" symbol="ProtocolProduceRequest" keywords="DataDump" opcode="ProduceRequest" task="Protocol" template="ProtocolProduceRequestArgs"/>
+  <event value="403" version="0" level="win:Informational" symbol="ProtocolProduceResponse" keywords="DataDump" opcode="ProduceResponse" task="Protocol" template="ProtocolProduceResponseArgs"/>
+  <event value="404" version="0" level="win:Informational" symbol="ProtocolOffsetRequest" keywords="DataDump" opcode="OffsetRequest" task="Protocol" template="ProtocolOffsetRequestArgs"/>
+  <event value="405" version="0" level="win:Informational" symbol="ProtocolOffsetResponse" keywords="DataDump" opcode="OffsetResponse" task="Protocol" template="ProtocolOffsetResponseArgs"/>
+  <event value="406" version="0" level="win:Informational" symbol="ProtocolFetchRequest" keywords="DataDump" opcode="FetchRequest" task="Protocol" template="ProtocolFetchRequestArgs"/>
+  <event value="407" version="0" level="win:Informational" symbol="ProtocolFetchResponse" keywords="DataDump" opcode="FetchResponse" task="Protocol" template="ProtocolFetchResponseArgs"/>
+  <event value="500" version="0" level="win:Informational" symbol="ProducerPermanentFailure" opcode="PermanentFailure" task="Producer" template="ProducerPermanentFailureArgs"/>
+  <event value="501" version="0" level="win:Informational" symbol="ProducerPermanentFailureDetails" keywords="DataDump" opcode="PermanentFailureDetails" task="Producer" template="ProducerPermanentFailureDetailsArgs"/>
+  <event value="502" version="0" level="win:Error" symbol="ProducerRecoverableErrors" opcode="RecoverableErrors" task="Producer" template="ProducerRecoverableErrorsArgs"/>
+  <event value="503" version="0" level="win:Informational" symbol="ProducerStarting" opcode="Starting" task="Producer" template="ProducerStartingArgs"/>
+  <event value="504" version="0" level="win:Informational" symbol="ProducerStarted" opcode="Started" task="Producer" template="ProducerStartedArgs"/>
+  <event value="505" version="0" level="win:Informational" symbol="ProducerError" opcode="Error" task="Producer" template="ProducerErrorArgs"/>
+  <event value="506" version="0" level="win:Informational" symbol="ProducerStopping" opcode="Stopping" task="Producer" template="ProducerStoppingArgs"/>
+  <event value="507" version="0" level="win:Informational" symbol="ProducerStoped" opcode="Stopped" task="Producer" template="ProducerStopedArgs"/>
+  <event value="600" version="0" level="win:Informational" symbol="ClusterStarting" opcode="Starting" task="Cluster" template="ClusterStartingArgs"/>
+  <event value="601" version="0" level="win:Informational" symbol="ClusterStarted" opcode="Started" task="Cluster" template="ClusterStartedArgs"/>
+  <event value="602" version="0" level="win:Informational" symbol="ClusterStopping" opcode="Stopping" task="Cluster" template="ClusterStoppingArgs"/>
+  <event value="603" version="0" level="win:Informational" symbol="ClusterError" opcode="Error" task="Cluster" template="ClusterErrorArgs"/>
+  <event value="604" version="0" level="win:Informational" symbol="ClusterStopped" opcode="Stopped" task="Cluster" template="ClusterStoppedArgs"/>
+  <event value="700" version="0" level="win:Informational" symbol="MetadataNewTopic" opcode="NewTopic" task="Metadata" template="MetadataNewTopicArgs"/>
+  <event value="702" version="0" level="win:Informational" symbol="MetadataPartitionErrorChange" opcode="PartitionErrorChange" task="Metadata" template="MetadataPartitionErrorChangeArgs"/>
+  <event value="703" version="0" level="win:Informational" symbol="MetadataPartitionIsrChange" opcode="PartitionIsrChange" task="Metadata" template="MetadataPartitionIsrChangeArgs"/>
+  <event value="704" version="0" level="win:Informational" symbol="MetadataPartitionLeaderChange" opcode="PartitionLeaderChange" task="Metadata" template="MetadataPartitionLeaderChangeArgs"/>
+  <event value="705" version="0" level="win:Informational" symbol="MetadataPartitionReplicasChange" opcode="PartitionReplicasChange" task="Metadata" template="MetadataPartitionReplicasChangeArgs"/>
+  <event value="706" version="0" level="win:Informational" symbol="MetadataTransportError" opcode="PartitionTransportError" task="Metadata" template="MetadataTransportErrorArgs"/>
+  <event value="707" version="0" level="win:Informational" symbol="MetadataNewBroker" opcode="NewBroker" task="Metadata" template="MetadataNewBrokerArgs"/>
+  <event value="800" version="0" level="win:Informational" symbol="ConsumerStarted" opcode="Started" task="Consumer" template="ConsumerStartedArgs"/>
+  <event value="801" version="0" level="win:Informational" symbol="ConsumerStopped" opcode="Stopped" task="Consumer" template="ConsumerStoppedArgs"/>
+  <event value="802" version="0" level="win:Informational" symbol="ConsumerFlowControl" opcode="FlowControl" task="Consumer" template="ConsumerFlowControlArgs"/>
+  <event value="900" version="0" level="win:Informational" symbol="Marker2" task="Marker2" template="Marker2Args"/>
+ </events>
+ <templates>
+  <template tid="EventSourceMessageArgs">
+   <data name="message" inType="win:UnicodeString"/>
+  </template>
+  <template tid="FetcherStartArgs">
+   <data name="fetcherId" inType="win:Int32"/>
+   <data name="topic" inType="win:UnicodeString"/>
+  </template>
+  <template tid="FetcherCancelSentWakeupArgs">
+   <data name="id" inType="win:Int32"/>
+  </template>
+  <template tid="FetcherPartitionSubscribedArgs">
+   <data name="id" inType="win:Int32"/>
+   <data name="partitionId" inType="win:Int32"/>
+  </template>
+  <template tid="FetcherFetchResponseArgs">
+   <data name="id" inType="win:Int32"/>
+  </template>
+  <template tid="FetcherMessageArgs">
+   <data name="id" inType="win:Int32"/>
+   <data name="keyLen" inType="win:Int32"/>
+   <data name="valueLen" inType="win:Int32"/>
+   <data name="offset" inType="win:Int64"/>
+   <data name="partition" inType="win:Int32"/>
+  </template>
+  <template tid="FetcherSleepArgs">
+   <data name="id" inType="win:Int32"/>
+  </template>
+  <template tid="FetcherWakeupArgs">
+   <data name="id" inType="win:Int32"/>
+  </template>
+  <template tid="FetcherFetchRequestArgs">
+   <data name="id" inType="win:Int32"/>
+   <data name="topicCount" inType="win:Int32"/>
+   <data name="partsCount" inType="win:Int32"/>
+   <data name="host" inType="win:UnicodeString"/>
+   <data name="port" inType="win:Int32"/>
+   <data name="brokerId" inType="win:Int32"/>
+  </template>
+  <template tid="ConnectionConnectingArgs">
+   <data name="host" inType="win:UnicodeString"/>
+   <data name="port" inType="win:Int32"/>
+  </template>
+  <template tid="ConnectionConnectedArgs">
+   <data name="host" inType="win:UnicodeString"/>
+   <data name="port" inType="win:Int32"/>
+  </template>
+  <template tid="ConnectionErroredArgs">
+   <data name="host" inType="win:UnicodeString"/>
+   <data name="port" inType="win:Int32"/>
+  </template>
+  <template tid="ConnectionDisconnectedArgs">
+   <data name="host" inType="win:UnicodeString"/>
+   <data name="port" inType="win:Int32"/>
+  </template>
+  <template tid="ConnectionReplaceClosedClientArgs">
+   <data name="host" inType="win:UnicodeString"/>
+   <data name="port" inType="win:Int32"/>
+  </template>
+  <template tid="Connection_MarkSocketAsFailed_CorrelationLoopCancellingArgs">
+   <data name="host" inType="win:UnicodeString"/>
+   <data name="port" inType="win:Int32"/>
+  </template>
+  <template tid="Connection_MarkSocketAsFailed_TcpClosingArgs">
+   <data name="host" inType="win:UnicodeString"/>
+   <data name="port" inType="win:Int32"/>
+  </template>
+  <template tid="CorrelationReadMessageSizeArgs">
+   <data name="size" inType="win:Int32"/>
+  </template>
+  <template tid="Correlation_ReadingBodyChunkArgs">
+   <data name="left" inType="win:Int32"/>
+  </template>
+  <template tid="CorrelationReadBodyChunkArgs">
+   <data name="read" inType="win:Int32"/>
+   <data name="left" inType="win:Int32"/>
+  </template>
+  <template tid="CorrelationReadBodyArgs">
+   <data name="size" inType="win:Int32"/>
+  </template>
+  <template tid="CorrelationReceivedCorrelationIdArgs">
+   <data name="correlationId" inType="win:Int32"/>
+  </template>
+  <template tid="CorrelationErrorArgs">
+   <data name="message" inType="win:UnicodeString"/>
+  </template>
+  <template tid="CorrelationWritingMessageArgs">
+   <data name="correlationId" inType="win:Int32"/>
+   <data name="length" inType="win:Int32"/>
+  </template>
+  <template tid="RecoveryMonitor_CreateArgs">
+   <data name="monitorId" inType="win:Int32"/>
+  </template>
+  <template tid="RecoveryMonitor_PartitionRecoveredArgs">
+   <data name="monitorId" inType="win:Int32"/>
+   <data name="topic" inType="win:UnicodeString"/>
+   <data name="partitionId" inType="win:Int32"/>
+  </template>
+  <template tid="RecoveryMonitor_PartitionFailedArgs">
+   <data name="monitorId" inType="win:Int32"/>
+   <data name="topic" inType="win:UnicodeString"/>
+   <data name="partitionId" inType="win:Int32"/>
+   <data name="errorCode" inType="win:Int32"/>
+  </template>
+  <template tid="RecoveryMonitor_PartitionFailedAgainArgs">
+   <data name="monitorId" inType="win:Int32"/>
+   <data name="topic" inType="win:UnicodeString"/>
+   <data name="partitionId" inType="win:Int32"/>
+   <data name="errorCode" inType="win:Int32"/>
+  </template>
+  <template tid="RecoveryMonitor_RecoveryLoopStartedArgs">
+   <data name="monitorId" inType="win:Int32"/>
+   <data name="host" inType="win:UnicodeString"/>
+   <data name="port" inType="win:Int32"/>
+   <data name="nodeId" inType="win:Int32"/>
+  </template>
+  <template tid="RecoveryMonitor_SendingPingArgs">
+   <data name="monitorId" inType="win:Int32"/>
+   <data name="host" inType="win:UnicodeString"/>
+   <data name="port" inType="win:Int32"/>
+  </template>
+  <template tid="RecoveryMonitor_PingResponseArgs">
+   <data name="monitorId" inType="win:Int32"/>
+   <data name="host" inType="win:UnicodeString"/>
+   <data name="port" inType="win:Int32"/>
+  </template>
+  <template tid="RecoveryMonitor_PingFailedArgs">
+   <data name="monitorId" inType="win:Int32"/>
+   <data name="host" inType="win:UnicodeString"/>
+   <data name="port" inType="win:Int32"/>
+   <data name="message" inType="win:UnicodeString"/>
+  </template>
+  <template tid="RecoveryMonitor_PossiblyHealedPartitionsArgs">
+   <data name="monitorId" inType="win:Int32"/>
+   <data name="count" inType="win:Int32"/>
+  </template>
+  <template tid="RecoveryMonitor_NoHealedPartitionsArgs">
+   <data name="monitorId" inType="win:Int32"/>
+  </template>
+  <template tid="RecoveryMonitor_CheckingBrokerAccessibilityArgs">
+   <data name="monitorId" inType="win:Int32"/>
+   <data name="host" inType="win:UnicodeString"/>
+   <data name="port" inType="win:Int32"/>
+   <data name="nodeId" inType="win:Int32"/>
+  </template>
+  <template tid="RecoveryMonitor_BrokerIsAccessibleArgs">
+   <data name="monitorId" inType="win:Int32"/>
+   <data name="host" inType="win:UnicodeString"/>
+   <data name="port" inType="win:Int32"/>
+   <data name="nodeId" inType="win:Int32"/>
+  </template>
+  <template tid="RecoveryMonitor_HealedPartitionsArgs">
+   <data name="monitorId" inType="win:Int32"/>
+   <data name="host" inType="win:UnicodeString"/>
+   <data name="port" inType="win:Int32"/>
+   <data name="nodeId" inType="win:Int32"/>
+   <data name="topicName" inType="win:UnicodeString"/>
+   <data name="partitions" inType="win:UnicodeString"/>
+  </template>
+  <template tid="RecoveryMonitor_RecoveryLoopStopArgs">
+   <data name="monitorId" inType="win:Int32"/>
+  </template>
+  <template tid="ProtocolMetadataRequestArgs">
+   <data name="request" inType="win:UnicodeString"/>
+  </template>
+  <template tid="ProtocolMetadataResponseArgs">
+   <data name="response" inType="win:UnicodeString"/>
+   <data name="host" inType="win:UnicodeString"/>
+   <data name="port" inType="win:Int32"/>
+   <data name="nodeId" inType="win:Int32"/>
+  </template>
+  <template tid="ProtocolProduceRequestArgs">
+   <data name="request" inType="win:UnicodeString"/>
+   <data name="nodeId" inType="win:Int32"/>
+  </template>
+  <template tid="ProtocolProduceResponseArgs">
+   <data name="response" inType="win:UnicodeString"/>
+   <data name="nodeId" inType="win:Int32"/>
+  </template>
+  <template tid="ProtocolOffsetRequestArgs">
+   <data name="request" inType="win:UnicodeString"/>
+  </template>
+  <template tid="ProtocolOffsetResponseArgs">
+   <data name="response" inType="win:UnicodeString"/>
+  </template>
+  <template tid="ProtocolFetchRequestArgs">
+   <data name="request" inType="win:UnicodeString"/>
+  </template>
+  <template tid="ProtocolFetchResponseArgs">
+   <data name="response" inType="win:UnicodeString"/>
+  </template>
+  <template tid="ProducerPermanentFailureArgs">
+   <data name="producerId" inType="win:Int32"/>
+   <data name="partitionCount" inType="win:Int32"/>
+  </template>
+  <template tid="ProducerPermanentFailureDetailsArgs">
+   <data name="producerId" inType="win:Int32"/>
+   <data name="error" inType="win:UnicodeString"/>
+  </template>
+  <template tid="ProducerRecoverableErrorsArgs">
+   <data name="producerId" inType="win:Int32"/>
+   <data name="partitionCount" inType="win:Int32"/>
+  </template>
+  <template tid="ProducerStartingArgs">
+   <data name="topic" inType="win:UnicodeString"/>
+   <data name="producerId" inType="win:Int32"/>
+  </template>
+  <template tid="ProducerStartedArgs">
+   <data name="topic" inType="win:UnicodeString"/>
+   <data name="producerId" inType="win:Int32"/>
+  </template>
+  <template tid="ProducerErrorArgs">
+   <data name="error" inType="win:UnicodeString"/>
+   <data name="producerId" inType="win:Int32"/>
+  </template>
+  <template tid="ProducerStoppingArgs">
+   <data name="topic" inType="win:UnicodeString"/>
+   <data name="producerId" inType="win:Int32"/>
+  </template>
+  <template tid="ProducerStopedArgs">
+   <data name="topic" inType="win:UnicodeString"/>
+   <data name="producerId" inType="win:Int32"/>
+  </template>
+  <template tid="ClusterStartingArgs">
+   <data name="clusterId" inType="win:Int32"/>
+  </template>
+  <template tid="ClusterStartedArgs">
+   <data name="clusterId" inType="win:Int32"/>
+  </template>
+  <template tid="ClusterStoppingArgs">
+   <data name="clusterId" inType="win:Int32"/>
+  </template>
+  <template tid="ClusterErrorArgs">
+   <data name="clusterId" inType="win:Int32"/>
+   <data name="error" inType="win:UnicodeString"/>
+  </template>
+  <template tid="ClusterStoppedArgs">
+   <data name="clusterId" inType="win:Int32"/>
+  </template>
+  <template tid="MetadataNewTopicArgs">
+   <data name="clusterId" inType="win:Int32"/>
+   <data name="topic" inType="win:UnicodeString"/>
+  </template>
+  <template tid="MetadataPartitionErrorChangeArgs">
+   <data name="clusterId" inType="win:Int32"/>
+   <data name="topic" inType="win:UnicodeString"/>
+   <data name="partId" inType="win:Int32"/>
+   <data name="oldCode" inType="win:Int32"/>
+   <data name="newCode" inType="win:Int32"/>
+  </template>
+  <template tid="MetadataPartitionIsrChangeArgs">
+   <data name="clusterId" inType="win:Int32"/>
+   <data name="topic" inType="win:UnicodeString"/>
+   <data name="partId" inType="win:Int32"/>
+   <data name="oldIsrs" inType="win:UnicodeString"/>
+   <data name="newIsrs" inType="win:UnicodeString"/>
+  </template>
+  <template tid="MetadataPartitionLeaderChangeArgs">
+   <data name="clusterId" inType="win:Int32"/>
+   <data name="topic" inType="win:UnicodeString"/>
+   <data name="partId" inType="win:Int32"/>
+   <data name="oldLeader" inType="win:Int32"/>
+   <data name="newLeader" inType="win:Int32"/>
+  </template>
+  <template tid="MetadataPartitionReplicasChangeArgs">
+   <data name="clusterId" inType="win:Int32"/>
+   <data name="topic" inType="win:UnicodeString"/>
+   <data name="partId" inType="win:Int32"/>
+   <data name="oldReplicas" inType="win:UnicodeString"/>
+   <data name="newReplicas" inType="win:UnicodeString"/>
+  </template>
+  <template tid="MetadataTransportErrorArgs">
+   <data name="topicName" inType="win:UnicodeString"/>
+   <data name="clusterId" inType="win:Int32"/>
+   <data name="part" inType="win:Int32"/>
+   <data name="leader" inType="win:Int32"/>
+  </template>
+  <template tid="MetadataNewBrokerArgs">
+   <data name="clusterId" inType="win:Int32"/>
+   <data name="host" inType="win:UnicodeString"/>
+   <data name="port" inType="win:Int32"/>
+   <data name="nodeId" inType="win:Int32"/>
+  </template>
+  <template tid="ConsumerStartedArgs">
+   <data name="consumerId" inType="win:Int32"/>
+   <data name="topic" inType="win:UnicodeString"/>
+  </template>
+  <template tid="ConsumerStoppedArgs">
+   <data name="consumerId" inType="win:Int32"/>
+   <data name="topic" inType="win:UnicodeString"/>
+  </template>
+  <template tid="ConsumerFlowControlArgs">
+   <data name="isOpen" inType="win:Int32"/>
+  </template>
+  <template tid="Marker2Args">
+   <data name="marker" inType="win:UnicodeString"/>
+  </template>
+ </templates>
+</provider>
+</events>
+</instrumentation>
+<localization>
+ <resources culture="en-US">
+  <stringTable>
+   <string id="keyword_DataDump" value="DataDump"/>
+   <string id="keyword_Session0" value="Session0"/>
+   <string id="keyword_Session1" value="Session1"/>
+   <string id="keyword_Session2" value="Session2"/>
+   <string id="keyword_Session3" value="Session3"/>
+   <string id="opcode_BrokerIsAccessible" value="BrokerIsAccessible"/>
+   <string id="opcode_CancelSentWakeup" value="CancelSentWakeup"/>
+   <string id="opcode_CheckingBrokerAccessibility" value="CheckingBrokerAccessibility"/>
+   <string id="opcode_Complete" value="Complete"/>
+   <string id="opcode_Connected" value="Connected"/>
+   <string id="opcode_Connecting" value="Connecting"/>
+   <string id="opcode_Create" value="Create"/>
+   <string id="opcode_Disconnected" value="Disconnected"/>
+   <string id="opcode_Error" value="Error"/>
+   <string id="opcode_Errored" value="Errored"/>
+   <string id="opcode_ExecutedHandler" value="ExecutedHandler"/>
+   <string id="opcode_ExecutingHandler" value="ExecutingHandler"/>
+   <string id="opcode_FetchRequest" value="FetchRequest"/>
+   <string id="opcode_FetchResponse" value="FetchResponse"/>
+   <string id="opcode_FlowControl" value="FlowControl"/>
+   <string id="opcode_HealedPartitions" value="HealedPartitions"/>
+   <string id="opcode_MarkSocketAsFailedCorrelationLoopCancelling" value="MarkSocketAsFailedCorrelationLoopCancelling"/>
+   <string id="opcode_MarkSocketAsFailedTcpClosing" value="MarkSocketAsFailedTcpClosing"/>
+   <string id="opcode_Message" value="Message"/>
+   <string id="opcode_MetadataRequest" value="MetadataRequest"/>
+   <string id="opcode_MetadataResponse" value="MetadataResponse"/>
+   <string id="opcode_NewBroker" value="NewBroker"/>
+   <string id="opcode_NewTopic" value="NewTopic"/>
+   <string id="opcode_NoHealedPartitions" value="NoHealedPartitions"/>
+   <string id="opcode_OffsetRequest" value="OffsetRequest"/>
+   <string id="opcode_OffsetResponse" value="OffsetResponse"/>
+   <string id="opcode_PartitionErrorChange" value="PartitionErrorChange"/>
+   <string id="opcode_PartitionFailed" value="PartitionFailed"/>
+   <string id="opcode_PartitionFailedAgain" value="PartitionFailedAgain"/>
+   <string id="opcode_PartitionIsrChange" value="PartitionIsrChange"/>
+   <string id="opcode_PartitionLeaderChange" value="PartitionLeaderChange"/>
+   <string id="opcode_PartitionRecovered" value="PartitionRecovered"/>
+   <string id="opcode_PartitionReplicasChange" value="PartitionReplicasChange"/>
+   <string id="opcode_PartitionSubscribed" value="PartitionSubscribed"/>
+   <string id="opcode_PartitionTransportError" value="PartitionTransportError"/>
+   <string id="opcode_PermanentFailure" value="PermanentFailure"/>
+   <string id="opcode_PermanentFailureDetails" value="PermanentFailureDetails"/>
+   <string id="opcode_PingFailed" value="PingFailed"/>
+   <string id="opcode_PingResponse" value="PingResponse"/>
+   <string id="opcode_PossiblyHealedPartitions" value="PossiblyHealedPartitions"/>
+   <string id="opcode_ProduceRequest" value="ProduceRequest"/>
+   <string id="opcode_ProduceResponse" value="ProduceResponse"/>
+   <string id="opcode_ReadBody" value="ReadBody"/>
+   <string id="opcode_ReadBodyChunk" value="ReadBodyChunk"/>
+   <string id="opcode_ReadingBodyChunk" value="ReadingBodyChunk"/>
+   <string id="opcode_ReadingMessageSize" value="ReadingMessageSize"/>
+   <string id="opcode_ReadMessageSize" value="ReadMessageSize"/>
+   <string id="opcode_ReceivedCorrelationId" value="ReceivedCorrelationId"/>
+   <string id="opcode_RecoverableErrors" value="RecoverableErrors"/>
+   <string id="opcode_RecoveryLoopStarted" value="RecoveryLoopStarted"/>
+   <string id="opcode_RecoveryLoopStop" value="RecoveryLoopStop"/>
+   <string id="opcode_ReplaceClosedClient" value="ReplaceClosedClient"/>
+   <string id="opcode_SendingPing" value="SendingPing"/>
+   <string id="opcode_ServerClosedConnection" value="ServerClosedConnection"/>
+   <string id="opcode_Sleep" value="Sleep"/>
+   <string id="opcode_Started" value="Started"/>
+   <string id="opcode_Starting" value="Starting"/>
+   <string id="opcode_Stopped" value="Stopped"/>
+   <string id="opcode_Stopping" value="Stopping"/>
+   <string id="opcode_Wakeup" value="Wakeup"/>
+   <string id="opcode_WritingMessage" value="WritingMessage"/>
+   <string id="task_Cluster" value="Cluster"/>
+   <string id="task_Connection" value="Connection"/>
+   <string id="task_Consumer" value="Consumer"/>
+   <string id="task_Correlation" value="Correlation"/>
+   <string id="task_EventSourceMessage" value="EventSourceMessage"/>
+   <string id="task_Fetcher" value="Fetcher"/>
+   <string id="task_Marker2" value="Marker2"/>
+   <string id="task_Metadata" value="Metadata"/>
+   <string id="task_Producer" value="Producer"/>
+   <string id="task_Protocol" value="Protocol"/>
+   <string id="task_RecoveryMonitor" value="RecoveryMonitor"/>
+  </stringTable>
+ </resources>
+</localization>
+</instrumentationManifest>
