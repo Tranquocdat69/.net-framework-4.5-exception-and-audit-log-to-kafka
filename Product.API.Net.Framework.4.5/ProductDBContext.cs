@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Configuration;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Infrastructure;
@@ -33,9 +34,9 @@ namespace Product.API.Net.Framework._4._5
             modelBuilder.Ignore<AuditEntry>();
         }
 
-        public virtual async Task<int> SaveChangesAsync(string username = "admin")
+        public virtual async Task<int> SaveChangesAsync()
         {
-            OnBeforeSaveChanges(username);
+            OnBeforeSaveChanges(ConfigurationManager.AppSettings["loggedUser"]);
             var result = await base.SaveChangesAsync();
 
             if (result > 0)
@@ -109,23 +110,34 @@ namespace Product.API.Net.Framework._4._5
         private void SendLogToKafka()
         {
             Log.Logger = new LoggerConfiguration()
-                .WriteTo.Kafka(new KafkaSinkOptions(topic: "log-audit", brokers: new[] { new Uri("https://10.26.7.60:9092") }))
+                .WriteTo.Kafka(new KafkaSinkOptions(topic: ConfigurationManager.AppSettings["topicAudit"], brokers: new[] { new Uri(ConfigurationManager.AppSettings["broker"]) }))
                 .CreateLogger();
 
             foreach (var auditEntry in auditEntries)
             {
                 Log.Information(
-                      "IP Adress: " + GetLocalIPAdress().ToString() + "\n"
-                    + "Service Name: " + Assembly.GetExecutingAssembly().FullName.Split(',')[0] + "\n"
-                    + "Username: " + auditEntry.ToAudit().Username + "\n"
-                    + "Type: " + auditEntry.ToAudit().Type + "\n"
-                    + "Table Name: " + auditEntry.ToAudit().TableName + "\n"
-                    + "DateTime: " + auditEntry.ToAudit().DateTime + "\n"
-                    + "Old Values: " + auditEntry.ToAudit().OldValues + "\n"
-                    + "New Values: " + auditEntry.ToAudit().NewValues + "\n"
-                    + "Affected Column: " + auditEntry.ToAudit().AffectedColumns + "\n"
-                    + "Primary Key: " + auditEntry.ToAudit().PrimaryKey + "\n"
-                    + "Version .NET: " + "{version}", ".NET Framework 4.5"
+                      "IP Adress: {IP_Adress}" + "\n"
+                    + "Service Name: {Service_Name}" + "\n"
+                    + "Username: {Username}" + "\n"
+                    + "Type: {Type}" + "\n"
+                    + "Table Name: {Table_Name}" + "\n"
+                    + "DateTime: {DateTime}"  + "\n"
+                    + "Old Values: {Old_Values}" + "\n"
+                    + "New Values: {New_Values}" + "\n"
+                    + "Affected Column: {Affected_Columns}" + "\n"
+                    + "Primary Key: {Primary_Key}" + "\n"
+                    + "Version .NET: {Version}" , 
+                      GetLocalIPAdress().ToString(), 
+                      Assembly.GetExecutingAssembly().FullName.Split(',')[0], 
+                      auditEntry.ToAudit().Username, 
+                      auditEntry.ToAudit().Type,
+                      auditEntry.ToAudit().TableName,
+                      auditEntry.ToAudit().DateTime,
+                      auditEntry.ToAudit().OldValues,
+                      auditEntry.ToAudit().NewValues,
+                      auditEntry.ToAudit().AffectedColumns,
+                      auditEntry.ToAudit().PrimaryKey,
+                      ".NET Framework 4.5"
                     );
             }
 

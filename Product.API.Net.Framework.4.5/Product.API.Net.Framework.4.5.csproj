@@ -220,6 +220,7 @@
     <Compile Include="Models\Audit.cs" />
     <Compile Include="Models\AuditEntry.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Test.cs" />
     <Compile Include="ProductDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

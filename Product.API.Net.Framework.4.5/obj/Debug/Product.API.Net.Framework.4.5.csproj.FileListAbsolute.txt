@@ -176,4 +176,3 @@ C:\WORKSPACE\.NET_Framework\4.5\Product.API.Net.Framework.4.5\Product.API.Net.Fr
 C:\WORKSPACE\.NET_Framework\4.5\Product.API.Net.Framework.4.5\Product.API.Net.Framework.4.5\obj\Debug\Product.API.Net.Framework.4.5.csproj.CopyComplete
 C:\WORKSPACE\.NET_Framework\4.5\Product.API.Net.Framework.4.5\Product.API.Net.Framework.4.5\obj\Debug\Product.API.Net.Framework.4.5.dll
 C:\WORKSPACE\.NET_Framework\4.5\Product.API.Net.Framework.4.5\Product.API.Net.Framework.4.5\obj\Debug\Product.API.Net.Framework.4.5.pdb
-C:\WORKSPACE\.NET_Framework\4.5\Product.API.Net.Framework.4.5\Product.API.Net.Framework.4.5\obj\Debug\Product.API.Net.Framework.4.5.csproj.AssemblyReference.cache

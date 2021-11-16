@@ -2,8 +2,13 @@
 using Serilog.Sinks.Kafka;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
+using System.Reflection;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 
 namespace Product.API.Net.Framework._4._5.Controllers
@@ -43,13 +48,28 @@ namespace Product.API.Net.Framework._4._5.Controllers
                 }
                 return Ok(product);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
                 Log.Logger = new LoggerConfiguration()
-                .WriteTo.Kafka(new KafkaSinkOptions(topic: "log-tracking-exception", brokers: new[] { new Uri("https://10.26.7.60:9092") }))
+                .WriteTo.Kafka(new KafkaSinkOptions(topic: ConfigurationManager.AppSettings["topicException"], brokers: new[] { new Uri(ConfigurationManager.AppSettings["broker"]) }))
                 .CreateLogger();
 
-                Log.Error("Error Message: {0}", e.InnerException);
+                Log.Error("Log Written Date: {DateTime}"+"\n"
+                         +"Service Name: {Service_Name}" + "\n"
+                         +"Error Line No: {Line}" + "\n"
+                         +"Error Message: {Message}" + "\n" 
+                         +"Exeption Type: {Exception_Type}" + "\n" 
+                         +"Error Url: {Error_Url}" + "\n"
+                         +"IP Adress: {IP_Adress}" + "\n"
+                         +"Logged in user: {User}" + "\n",
+                         DateTime.Now.ToString(),
+                         Assembly.GetExecutingAssembly().FullName.Split(',')[0],
+                         ex.StackTrace.Substring(ex.StackTrace.Length - 7, 7),
+                         ex.InnerException.ToString(),
+                         ex.GetType().ToString(),
+                         HttpContext.Current.Request.Url.ToString(),
+                         Dns.GetHostEntry(Dns.GetHostName()).AddressList.FirstOrDefault(ip => ip.AddressFamily == AddressFamily.InterNetwork),
+                         ConfigurationManager.AppSettings["loggedUser"]);
 
                 return Conflict();
             }
